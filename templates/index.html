@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Archana M Nair - Associate Professor, IIT Guwahati</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a52;
+            --secondary: #c77c3f;
+            --tertiary: #8b4513;
+            --accent: #d4a574;
+            --text-dark: #1a1a1a;
+            --text-light: #4a4a4a;
+            --bg-light: #faf8f5;
+            --bg-white: #ffffff;
+            --border: #e5ddd2;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] {
+            --primary: #e8b87d;
+            --secondary: #f0a560;
+            --tertiary: #c99063;
+            --accent: #8b7355;
+            --text-dark: #e8e8e8;
+            --text-light: #b8b8b8;
+            --bg-light: #0f1419;
+            --bg-white: #1a1f26;
+            --border: #2a2f36;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            z-index: 1001;
+            background: var(--bg-white);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            padding: 0.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px var(--shadow-hover);
+        }
+
+        .theme-toggle-inner {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.8rem;
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover .theme-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] nav {
+            background: rgba(26, 31, 38, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s;
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.15;
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-light);
+            padding: 0.6rem 1.4rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .hero-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.6rem;
+            color: var(--secondary);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            transition: color 0.3s ease;
+        }
+
+        .hero-affiliation {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.9;
+            transition: color 0.3s ease;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .btn {
+            padding: 1.1rem 2.8rem;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-white);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--bg-white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--shadow-hover);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 600px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px var(--shadow-hover);
+            position: relative;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 100%);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px var(--shadow-hover);
+        }
+
+        .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(26, 58, 82, 0.15) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5.5rem;
+            color: var(--accent);
+            font-weight: 300;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        /* Research Cards */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .research-card {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .research-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px var(--shadow-hover);
+            border-left-color: var(--secondary);
+        }
+
+        .research-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .research-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .research-card p {
+            color: var(--text-light);
+            line-height: 1.9;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        /* Experience Section - Enhanced */
+        .experience-bg {
+            background: var(--primary);
+            color: var(--bg-white);
+            padding: 10rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        /* Academic Journey Section */
+        .academic-bg {
+            background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+            padding: 10rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .academic-bg::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .education-grid {
+            display: grid;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: var(--accent);
+            opacity: 0.05;
+            border-radius: 0 12px 0 100%;
+            transition: all 0.4s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px var(--shadow-hover);
+            border-left-color: var(--secondary);
+        }
+
+        .education-item:hover::before {
+            width: 200px;
+            height: 200px;
+            opacity: 0.08;
+        }
+
+        .degree-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            color: var(--bg-white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .degree-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+
+        .degree-specialization {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            font-style: italic;
+        }
+
+        .degree-institution {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .degree-location {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .thesis-section {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border-left: 3px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover .thesis-section {
+            border-left-color: var(--secondary);
+        }
+
+        .thesis-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .thesis-title {
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        .experience-bg .section-title {
+            color: var(--bg-white);
+        }
+
+        .experience-bg .section-number {
+            color: var(--accent);
+        }
+
+        .experience-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 5rem;
+            padding-left: 3rem;
+            padding: 2.5rem 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -4.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            transform: translateY(-50%) scale(1.3);
+            box-shadow: 0 0 0 8px rgba(212, 165, 116, 0.3);
+        }
+
+        .timeline-year {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .timeline-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--bg-white);
+        }
+
+        .timeline-company {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-location {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .timeline-item p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        /* Publications - Enhanced */
+        .publications {
+            background: var(--bg-white);
+        }
+
+        .year-group {
+            margin-bottom: 5rem;
+        }
+
+        .year-header {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent);
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .year-header:hover {
+            border-bottom-color: var(--secondary);
+            transform: translateX(10px);
+        }
+
+        .publication-list {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .publication-item {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .publication-item:hover {
+            border-left-color: var(--secondary);
+            box-shadow: 0 15px 40px var(--shadow-hover);
+            transform: translateX(8px) scale(1.01);
+        }
+
+        .publication-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .pub-number {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: var(--accent);
+            color: var(--bg-light);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover .pub-number {
+            background: var(--secondary);
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .publication-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            transition: color 0.3s;
+            padding-right: 60px;
+        }
+
+        .publication-item:hover .publication-title {
+            color: var(--secondary);
+        }
+
+        .publication-authors {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.7rem;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .publication-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.7rem;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .publication-publisher {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-light);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.7rem;
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover .publication-publisher {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Students Section */
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .student-category {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 12px;
+            border-top: 5px solid var(--secondary);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .student-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px var(--shadow-hover);
+        }
+
+        .student-category:hover::before {
+            opacity: 0.05;
+        }
+
+        .student-category h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .student-category ul {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .student-category li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dark);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .student-category li:hover {
+            padding-left: 1rem;
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+        }
+
+        .student-category li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info {
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        .contact-item {
+            margin-bottom: 2.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value {
+            font-size: 1.15rem;
+            color: var(--primary);
+            font-weight: 500;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-value a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--secondary);
+        }
+
+        .contact-value a:hover::after {
+            width: 100%;
+        }
+
+        .affiliations {
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        .affiliations h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .affiliations ul {
+            list-style: none;
+        }
+
+        .affiliations li {
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .affiliations li:hover {
+            padding-left: 1.5rem;
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+        }
+
+        .affiliations li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--bg-white);
+            padding: 4rem 3rem;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--secondary);
+            color: var(--bg-white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow-hover);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 4rem 2rem;
+                gap: 3rem;
+            }
+
+            h1 {
+                font-size: 4rem;
+            }
+
+            .hero-image {
+                height: 450px;
+            }
+
+            .section {
+                padding: 6rem 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .nav-container {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .theme-toggle {
+                right: 1rem;
+            }
+
+            .timeline {
+                padding-left: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .section-number {
+                font-size: 4rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .research-grid,
+            .students-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .theme-toggle {
+                top: 80px;
+                right: 1rem;
+            }
+
+            .timeline-item {
+                padding: 2rem;
+            }
+
+            .pub-number {
+                right: 1.5rem;
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <div class="theme-toggle-inner">
+            <span class="theme-icon">🌓</span>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-top" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Archana M Nair</div>
+            <ul class="nav-links">
+                <li><a href="#research">Research</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#students">Students</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Planetary & Earth Sciences</span>
+            <h1>Archana M Nair</h1>
+            <p class="hero-subtitle">Associate Professor</p>
+            <p class="hero-affiliation">
+                Department of Civil Engineering<br>
+                Centre for Sustainable Water Research<br>
+                Indian Institute of Technology Guwahati
+            </p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                <a href="#publications" class="btn btn-secondary">View Publications</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="image-container">
+               <img class="placeholder-image" src="{{ url_for('static', filename='images/prof_profile_pic.jpg') }}" alt="Profile">
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests -->
+    <section class="section" id="research">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Research Focus</h2>
+        </div>
+        <div class="research-grid">
+            <div class="research-card">
+                <h3>Planetary Exploration</h3>
+                <p>Remote sensing applications in planetary exploration, focusing on spectroscopic analysis of terrestrial and extraterrestrial geological formations.</p>
+            </div>
+            <div class="research-card">
+                <h3>Petrophysical Modeling</h3>
+                <p>Advanced rock physics modeling for petroleum exploration, integrating laboratory measurements with field-scale applications.</p>
+            </div>
+            <div class="research-card">
+                <h3>Thermal Spectroscopy</h3>
+                <p>Thermal infrared emission and reflectance spectroscopy for geological characterization and mineral identification.</p>
+            </div>
+            <div class="research-card">
+                <h3>Hyperspectral Analysis</h3>
+                <p>Hyperspectral remote sensing techniques for mineral exploration and geological mapping applications.</p>
+            </div>
+            <div class="research-card">
+                <h3>Hydrogeological Systems</h3>
+                <p>Remote sensing and GIS applications in hydrogeological studies, groundwater resource assessment, and sustainable water management.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience-bg" id="experience">
+        <div class="experience-container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Professional Journey</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2021 - Present</div>
+                    <h3>Associate Professor</h3>
+                    <div class="timeline-company">Department of Civil Engineering</div>
+                    <div class="timeline-location">Indian Institute of Technology Guwahati</div>
+                    <p>Leading research programs in planetary exploration and sustainable water systems. Mentoring doctoral students and establishing collaborative research initiatives in remote sensing and geophysics.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2015 - 2021</div>
+                    <h3>Assistant Professor</h3>
+                    <div class="timeline-company">Department of Civil Engineering</div>
+                    <div class="timeline-location">Indian Institute of Technology Guwahati</div>
+                    <p>Established research laboratory focusing on spectroscopy and remote sensing. Guided multiple PhD students to completion and developed innovative teaching methodologies for earth sciences.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">Prior to 2015</div>
+                    <h3>Scientist</h3>
+                    <div class="timeline-company">National Centre for Earth Science Studies (NCESS)</div>
+                    <div class="timeline-location">Thiruvananthapuram, Kerala<br>Department of Earth Sciences, Government of India</div>
+                    <p>Conducted advanced research in earth sciences and planetary geology. Contributed to national and international research projects in remote sensing and geological investigations.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">Industry Experience</div>
+                    <h3>Petrophysicist</h3>
+                    <div class="timeline-company">Shell Technology India</div>
+                    <div class="timeline-location">Bangalore, Karnataka</div>
+                    <p>Specialized in rock physics modeling and petroleum exploration. Applied advanced petrophysical analysis techniques and contributed to hydrocarbon exploration projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Journey -->
+    <section class="academic-bg" id="education">
+        <div class="experience-container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Academic Journey</h2>
+            </div>
+            <div class="education-grid">
+                <div class="education-item">
+                    <span class="degree-badge">Doctoral Degree</span>
+                    <h3 class="degree-title">Ph.D. in Spectroscopy, Remote Sensing & Planetary Exploration</h3>
+                    <div class="degree-specialization">Spectroscopy • Remote Sensing • Planetary Exploration</div>
+                    <div class="degree-institution">Indian Institute of Technology Bombay</div>
+                    <div class="degree-location">Mumbai, Maharashtra, India</div>
+                    <div class="thesis-section">
+                        <div class="thesis-label">Doctoral Thesis</div>
+                        <div class="thesis-title">Reflectance and Thermal Emission Spectroscopy of Terrestrial Rocks for Spectral Remote Sensing and Image Analysis</div>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <span class="degree-badge">Master's Degree</span>
+                    <h3 class="degree-title">M.Tech in Geographic Information Systems</h3>
+                    <div class="degree-specialization">GIS • Remote Sensing • Hydrogeology</div>
+                    <div class="degree-institution">Indian Institute of Technology Bombay</div>
+                    <div class="degree-location">Mumbai, Maharashtra, India</div>
+                    <div class="thesis-section">
+                        <div class="thesis-label">Master's Thesis</div>
+                        <div class="thesis-title">Remote Sensing and GIS for Hydrogeological Studies in Panvel Basin, Maharashtra</div>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <span class="degree-badge">Master's Degree</span>
+                    <h3 class="degree-title">M.Sc.Tech in Applied Geology</h3>
+                    <div class="degree-specialization">Applied Geology • Earth Sciences</div>
+                    <div class="degree-institution">Indian School of Mines (IIT-ISM Dhanbad)</div>
+                    <div class="degree-location">Dhanbad, Jharkhand, India</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="section publications" id="publications">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Publications</h2>
+        </div>
+
+        <!-- 2022 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2022</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <a href="https://scholar.google.com/scholar?oi=bibs&cluster=2605710270228283139&btnI=1&hl=en" target="_blank" class="publication-link">
+                        <span class="pub-number">1</span>
+                        <div class="publication-title">Occurrence of secondary minerals at Tharsis Montes of Mars: A critical assessment</div>
+                        <div class="publication-authors">Adnan Ahmad, Raj Patel, Bhaswati Deka, Rohit Nagori, AS Arya, Archana M Nair</div>
+                        <div class="publication-meta">ICARUS, 378, 114953</div>
+                        <span class="publication-publisher">Academic Press</span>
+                    </a>
+                </div>
+
+                <div class="publication-item">
+                    <span class="pub-number">2</span>
+                    <div class="publication-title">Modelling the effect of grain anisotropy on inter-granular porosity</div>
+                    <div class="publication-authors">Shreya Katre, Archana M Nair</div>
+                    <div class="publication-meta">Journal of Petroleum Exploration and Production Technology, 12, 783-781</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+
+                <div class="publication-item">
+                    <a href="https://scholar.google.com/scholar?oi=bibs&cluster=7204214305178194664&btnI=1&hl=en" target="_blank" class="publication-link">
+                        <span class="pub-number">3</span>
+                        <div class="publication-title">A multivariate statistical approach in correlating the acoustic properties with petrophysics and mineralogy on sandstones</div>
+                        <div class="publication-authors">Siddharth Garia, Arnab Kumar Pal, K Ravi, Archana M Nair</div>
+                        <div class="publication-meta">Geophysical Journal International (1) 170-178</div>
+                        <span class="publication-publisher">Oxford University Press</span>
+                    </a>
+                </div>
+
+                <div class="publication-item">
+                    <a href="https://scholar.google.com/scholar?oi=bibs&cluster=16727046765831988750&btnI=1&hl=en" target="_blank" class="publication-link">
+                        <span class="pub-number">4</span>
+                        <div class="publication-title">Predictive modelling of land use land cover dynamics for a tropical coastal urban city in Kerala, India</div>
+                        <div class="publication-authors">Ande Bhuvaneswari Devi, Dhritilekha Deka, Thayyil Davood Aneesh, Reji Srinivas, Archana M Nair</div>
+                        <div class="publication-meta">Arabian Journal of Geosciences, 15(5), 1-19</div>
+                        <span class="publication-publisher">Springer</span>
+                    </a>
+                </div>
+
+                <div class="publication-item">
+                    <a href="https://scholar.google.com/scholar?oi=bibs&cluster=4405922983856134348&btnI=1&hl=en" target="_blank" class="publication-link">
+                        <span class="pub-number">5</span>
+                        <div class="publication-title">Pore scale image analysis for petrophysical modelling</div>
+                        <div class="publication-authors">Arnab Kumar Pal, Siddharth Garia, K Ravi, Archana M Nair</div>
+                        <div class="publication-meta">Micron, 154(4), 103195</div>
+                        <span class="publication-publisher">Pergamon</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2021 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2021</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">6</span>
+                    <div class="publication-title">Landform evolution of Tharsis Montes and Olympus Mons of Mars: Insights from morphometric, hypsometric and chronologic evidences</div>
+                    <div class="publication-authors">Adnan Ahmad, Archana Nair</div>
+                    <div class="publication-meta">Journal of Earth System Science, 130(3), 1-20</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+
+                <div class="publication-item">
+                    <span class="pub-number">7</span>
+                    <div class="publication-title">Laboratory assessment on factors controlling the acoustic properties of carbonates: A case study from Bombay offshore</div>
+                    <div class="publication-authors">Garia, S., Pal, A.K., Ravi, K., Nair, A.M.</div>
+                    <div class="publication-meta">Journal of Petroleum Science and Engineering. DOI: 10.1016/j.petrol.2021.108607</div>
+                    <span class="publication-publisher">Elsevier</span>
+                </div>
+
+                <div class="publication-item">
+                    <span class="pub-number">8</span>
+                    <div class="publication-title">Influence of Grain Sorting and Grain Shape/Elongation on the Intergranular Porosity of Cubic Packing for Sedimentary Rocks</div>
+                    <div class="publication-authors">Katre S., Pal A.K., Garia S., Ravi K., Nair A.M.</div>
+                    <div class="publication-meta">Proceedings of the Indian Geotechnical Conference 2019. Lecture Notes in Civil Engineering, vol 134. DOI: 10.1007/978-981-33-6370-0_55</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+
+                <div class="publication-item">
+                    <span class="pub-number">9</span>
+                    <div class="publication-title">Ultrasonic P Wave Velocity Measurement of Sedimentary Rocks in Laboratory and Its Dependency on Different Parameters by Using Multivariate Regression Analysis</div>
+                    <div class="publication-authors">Garia S., Pal A.K., Nair A.M., Ravi K.</div>
+                    <div class="publication-meta">Seismic Hazards and Risk. Lecture Notes in Civil Engineering, vol 116. DOI: 10.1007/978-981-15-9976-7_30</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2020 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2020</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">10</span>
+                    <div class="publication-title">Influence of Packing of Grain Particles on Porosity</div>
+                    <div class="publication-authors">Pal A.K., Garia S., Ravi K., Nair A.M.</div>
+                    <div class="publication-meta">Geotechnical Characterization and Modelling. Lecture Notes in Civil Engineering, vol 85. DOI: 10.1007/978-981-15-6086-6_79</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+
+                <div class="publication-item">
+                    <span class="pub-number">11</span>
+                    <div class="publication-title">Elastic wave velocities as indicators of lithology-based geomechanical behaviour of sedimentary rocks: an overview</div>
+                    <div class="publication-authors">Garia, S., Pal, A.K., Nair, A.M., Ravi, K.</div>
+                    <div class="publication-meta">SN Applied Sciences, 2, 9, 1-21</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2019 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2019</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">12</span>
+                    <div class="publication-title">A comprehensive analysis on the relationships between elastic wave velocities and petrophysical properties of sedimentary rocks based on laboratory measurements</div>
+                    <div class="publication-authors">Garia, S., Pal, A.K., Ravi, K., Nair, A.M.</div>
+                    <div class="publication-meta">Journal of Petroleum Exploration and Production Technology, 9:1869–1881. DOI:10.1007/s13202-019-0675-0</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+
+                <div class="publication-item">
+                    <span class="pub-number">13</span>
+                    <div class="publication-title">Stable water isotope signatures of dual monsoon precipitation: A case study of Greater Cochin region, south-west coast of India</div>
+                    <div class="publication-authors">Aneesh TD, R Srinivas, AT Singh, TR Resmi, AM Nair, BL Redkar</div>
+                    <div class="publication-meta">Journal of Earth System Science, 128(8), 210</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2018 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2018</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">14</span>
+                    <div class="publication-title">Assessment of Dynamic Groundwater Reserve of Kamarup District Lower Assam, India</div>
+                    <div class="publication-authors">AB Devi, A Nair</div>
+                    <div class="publication-meta">Int. J. Adv. Civ. Eng. Architect. Res. 4, 89-99. DOI:10.23953/cloud.ijacear.391</div>
+                    <span class="publication-publisher">International Journal</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2017 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2017</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">15</span>
+                    <div class="publication-title">Geochemical modelling of Terrestrial Igneous Rock Compositions using Laboratory Thermal Emission Spectroscopy with an overview on its applications to Indian Mars Mission</div>
+                    <div class="publication-authors">A M Nair, G. Mathew</div>
+                    <div class="publication-meta">Planetary Space Science Vol. 10, pp 62-73. DOI: 10.1016/j.pss.2017.04.009</div>
+                    <span class="publication-publisher">Elsevier</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2016 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2016</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">16</span>
+                    <div class="publication-title">Study on the Impact of Land use changes on urban hydrology of Cochin, Kerala, India</div>
+                    <div class="publication-authors">Archana M. Nair, Lekshmi Mohanlal, C.R.Ayishath Nabeela, T.D.Aneesh, Reji Srinivas</div>
+                    <div class="publication-meta">Urban Hydrology, Watershed Management and Socio-Economic Aspects, Chapter 6, Water Sci.Technol.Library Volume 73</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2014 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2014</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">17</span>
+                    <div class="publication-title">Effect of bulk chemistry in the spectral variability of igneous rocks in VIS-NIR region: Implications to Remote Compositional Mapping</div>
+                    <div class="publication-authors">Archana M Nair, George Mathew</div>
+                    <div class="publication-meta">Int. Journal of Applied Earth Observation and Geoinformation, Vol 30, Pages 227–237</div>
+                    <span class="publication-publisher">Elsevier</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2012 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2012</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">18</span>
+                    <div class="publication-title">Lithological discrimination of the Phenaimatha mafic-ultramafic complex, Gujarat, India using the Advanced Spaceborne Thermal Emission and Reflection Radiometer (ASTER)</div>
+                    <div class="publication-authors">Archana M Nair, George Mathew</div>
+                    <div class="publication-meta">Int. Journal of Remote sensing. DOI:10.1080/01431161.2011.591441</div>
+                    <span class="publication-publisher">Taylor and Francis</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2009 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2009</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">19</span>
+                    <div class="publication-title">Quantitative Thermal Emission Spectroscopy for Geological Applications: Laboratory Technique</div>
+                    <div class="publication-authors">George Mathew, Archana Nair, T. K. G Rao, Kanchan Pande</div>
+                    <div class="publication-meta">Journal of Earth System Sciences, vol.118, no.4, pp. 391-404</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2004 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2004</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">20</span>
+                    <div class="publication-title">Geographic Information System and groundwater quality mapping in Panvel Basin, Maharashtra, India</div>
+                    <div class="publication-authors">S. Anbazhagan, Archana M. Nair</div>
+                    <div class="publication-meta">Environmental Geology, Vol.45, pp.753-761</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2002 Publications -->
+        <div class="year-group">
+            <h3 class="year-header">2002</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <span class="pub-number">21</span>
+                    <div class="publication-title">A geostatistical Modelling Approach to Gold Mineralisation at Hutti Mine, Raichur District, Karnataka</div>
+                    <div class="publication-authors">B.C. Sarkar, Archana M. Nair</div>
+                    <div class="publication-meta">Journal of Geological Society of India, Vol. 60, pp.639-648</div>
+                    <span class="publication-publisher">Springer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Students -->
+    <section class="section" id="students">
+        <div class="section-header">
+            <span class="section-number">05</span>
+            <h2 class="section-title">Doctoral Students</h2>
+        </div>
+        <div class="students-grid">
+            <div class="student-category">
+                <h3>Ongoing Research</h3>
+                <ul>
+                    <li>Adnan Ahmad</li>
+                    <li>Arnab Kumar Pal</li>
+                    <li>Uma Narayan M</li>
+                    <li>Katre Shreya Shrikant</li>
+                    <li>Sourav Kumar</li>
+                    <li>Dhritilekha Deka</li>
+                    <li>Madhusmita Nanda</li>
+                </ul>
+            </div>
+            <div class="student-category">
+                <h3>Graduated</h3>
+                <ul>
+                    <li>Dr. Bhuvaneswari Devi A</li>
+                    <li>Dr. Siddarth Garia</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+        <div class="section-header">
+            <span class="section-number">06</span>
+            <h2 class="section-title">Connect</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value"><a href="/cdn-cgi/l/email-protection#016f6068732f60736269606f6041686875662f60622f686f"><span class="__cf_email__" data-cfemail="620c030b104c0310010a030c03220b0b16054c03014c0b0c">[email&#160;protected]</span></a></div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">+91 361 258 3338<br>+91 361 258 4227</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Office</div>
+                    <div class="contact-value">
+                        Department of Civil Engineering<br>
+                        Indian Institute of Technology Guwahati<br>
+                        Guwahati - 781039, India
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Links</div>
+                    <div class="contact-value">
+                        <a href="https://www.iitg.ac.in" target="_blank">IIT Guwahati</a> | 
+                        <a href="https://iitg.irins.org/profile/128236" target="_blank">Vidwan Profile</a>
+                    </div>
+                </div>
+            </div>
+            <div class="affiliations">
+                <h3>Professional Affiliations</h3>
+                <ul>
+                    <li>American Geophysical Union (AGU)</li>
+                    <li>Society of Petroleum Geologists (SPG)</li>
+                    <li>Society of Petroleum and Well Logging Analysis (SPWLA)</li>
+                    <li>Indian Society of Remote Sensing (ISRS)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Dr. Archana M Nair. All rights reserved.</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update theme icon
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = newTheme === 'dark' ? '☀️' : '🌓';
+        }
+
+        // Load saved theme on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = savedTheme === 'dark' ? '☀️' : '🌓';
+        });
+
+        // Scroll to Top Functionality
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
